@@ -1,1 +1,183 @@
+################
+
+# Author: Simon Sasin
+
+# Date: 09/19/2019
+
+# This programs finds how many days there are in february per year input
+
+#################
+#program intro
+print('Input a year to see how many days there are in February of that year \n')
+
+#user input request for years
+year = input('Please enter year: ')
+
+#output if year input is not a leap year
+daysfeb = 28
+
+#decision statements for calculating whether an inputted year is a leap year or not
+if int(year)%100 == 0:
+    if int(year)%400 == 0:
+        daysfeb = 29
+elif int(year)%4 == 0:
+    daysfeb = 29
+
+
+#print final output
+print('\nThere are ' + str(daysfeb) + ' in February in ' + year)
+
+
+################
+
+# Author: Simon Sasin
+
+# Date: 09/19/2019
+
+# This program takes user input of how many packages are purchased and displays
+
+# the amount of discount(if any) and total amount of the purchases after discount
+#################
+#introdue user to program
+print('This program gives you what your discount is annd grand total is based off of the amount of packages you purchased\n')
+
+#assign input to variable
+number = input('Enter number of packages purchased: ')
+
+
+#series of decision statements to apply and output discount info
+if int(number) < 0:
+    print('Invalid Input!')
+elif int(number) >= 0 and int(number) < 10:
+    discount = int(number)*99
+    discount ='{0:,.2f}'.format(discount)
+    print('\nNo discount applied\nThe final price for purchasing ' + str(number) + ' packages is $ ' + str(discount))
+elif int(number) > 10 and int(number) < 20:
+    discount = (int(number)*99) * .90
+    discount ='{0:,.2f}'.format(discount)
+    print('10% discount applied')
+    print('The final price for purchasing ' + str(number) + ' packages is $ ' + str(discount))
+elif int(number) >= 20 and int(number) < 50:
+    discount = (int(number)*99) * .75
+    discount ='{0:,.2f}'.format(discount)
+    print('25% discount applied')
+    print('The final price for purchasing ' + str(number) + ' packages is $ ' + str(discount))
+elif int(number) > 49 and int(number) < 100:
+    discount = (int(number)*99) * .65
+    discount ='{0:,.2f}'.format(discount)
+    print('35% discount applied')
+    print('The final price for purchasing ' + str(number) + ' packages is $ ' + str(discount))
+elif int(number) > 99:
+    discount = (int(number)*99) * .55
+    discount ='{0:,.2f}'.format(discount)
+    print('45% discount applied')
+    print('The final price for purchasing ' + str(number) + ' packages is $ ' + str(discount))
+    
+    #################
+# Author: Simon Sasin   
+
+# Date: 09/19/2019
+
+# This program takes a pocket number as and input and displays whether is green red or black
+
+#################
+#introduce and explain program to user
+print('This program tells you whether your pocket number is red back or green')
+
+#assign input to variable
+number = input('Enter pocket number: ')
+
+#finds whether number is odd or even
+color = int(number)%2
+
+#series of decision statements to decide output
+if int(number) == 0:
+    print('The pocket is green')
+elif int(number) >= 1 and int(number) <= 10:
+    if color == 0:
+        print('The pocket ' + number + ' is black.')
+    else:
+        print('The pocket ' + number + ' is red.')
+elif int(number) >= 11 and int(number) <= 18:
+    if color == 0:
+        print('The pocket ' + number + ' is red.')
+    else:
+        print('The pcoket ' + number + ' is black.')
+elif int(number) >= 19 and int(number) <= 28:
+    if color == 0:
+        print('The pocket ' + number + ' is black.')
+    else:
+        print('The pocket ' + number + ' is red.')
+elif int(number) >= 29 and int(number) <= 36:
+    if color == 0:
+        print('The pocket ' + number + ' is red.')
+    else:
+        print('The pocket ' + number + ' is black.')
+else:
+    print('Invalid Input!')
+    
+ #################
+# Author: Simon Sasin   
+
+# Date: 09/19/2019
+
+# This program takes a user input of seconds and outputs what those seconds are equal
+
+# to in minutes seconds and/or days
+
+#################
+#introduce user to program
+print('This program divides your input of seconds into days, minutes, and/or seconds')
+
+#user input assigned to a seconds variable
+seconds = input('Input number of seconds: ')
+
+#initial calculations to divide sections into proper units
+minutes = int(seconds) // 60
+hours = int(minutes) // 60
+days = int(hours) // 24
+seconds_remaining = int(seconds) % 60
+
+#series of decisions syntac to divide seconds into proper time output
+if int(seconds) >= 60 and int(seconds) < 3600:
+    print(str(seconds) + ' seconds equal to: ' + str(minutes) + ' full minute(s) and ' + str(seconds_remaining) + ' second(s).')
+elif int(seconds) > 3600 and int(seconds) < 86400:
+    minutes_update = (int(minutes)-(int(hours)*60)) 
+    print(str(seconds) + ' seconds equal to: ' + str(hours) + ' full hour(s), ' + str(minutes_update) + ' full minute(s) and ' + str(seconds_remaining) + ' second(s).')    
+elif int(seconds) >= 86400:
+    minutes_update = (int(minutes)-(int(hours)*60))
+    hours_update = (int(hours) - (int(days)*24))
+    print(str(seconds) + ' seconds equal to: ' + str(days) + ' full day(s),'+ str(hours_update) + ' full hour(s), ' + str(minutes_update) + ' full minute(s) and ' + str(seconds_remaining) + ' second(s).')    
+else:
+    print('The seconds you entered is less than a minute')
+    
+    #################
+# Author: Simon Sasin   
+
+# Date: 09/19/2019
+
+# This program calculates reynolds number from velocity, pipe diameter and viscosity inputs
+
+#################
+#introduce user to program and how it functions
+print('This programs calculates Reynolds Number from Velocity, pipe diameter and kinematic viscosity inputs')
+
+#accept user inputs and assign to variables
+V = input('Input velocity flowing through pipe(m/s or ft/sec: ')
+d = input('Input diameter of pipe(m or ft: ')
+T = input('Input water temperature (Celcius): ')
+
+#decision syntax used to determine K value
+if int(T) == 5:
+    K = .00000149
+elif int(T) == 10:
+    K = .00000131
+elif int(T) == 15:
+    K = .00000115
+
+#calculate Re Number
+Re = (float(V)*float(d))//float(K)
+
+#output reynolds number in scientific notation
+print('The Reynolds Number for these inputs is: ' + '{0:1.2E}'.format(Re) )
 
