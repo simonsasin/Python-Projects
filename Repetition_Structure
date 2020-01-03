@@ -1,0 +1,158 @@
+EXERCISE 1
+#################
+# Author: Simon Sasin   
+# Date: 09/29/2019
+# This program calculates the average of user inputted values
+#################
+
+#initialize summing and counting variables
+total = 0
+count = 0
+
+#initial user input
+number = input('Enter a positive number (negative to quit): ')
+
+#loop that will iterate and sum numbers until user inputs a negative number
+while float(number) >= 0:
+    count = count + 1
+    total = total + float(number)
+    number = input('Enter a positive number (negative to quit): ')
+
+#calculation of average
+average = total / count
+
+#printing of value outputs
+total = round(total, 2)
+print('\nSum = ' + str(total))
+average = round(average, 2)
+print('Average = ' + str(average))
+
+
+EXERCISE 2
+#################
+# Author: Simon Sasin   
+# Date: 09/29/2019
+# This program calculates the total rainfall and average rainfall per month based off user input of month
+#-ly rainfall
+#################
+
+#take input and assign initial values to variables
+year_total = input('Enter number of years: ')
+months = int(year_total)*12
+current_year = 1
+total_months = 0
+rain_allmonths = 0
+
+#while loop to cycle through years and then for each year to cycle for each month
+while (int(current_year) <=int(year_total)) & int(year_total) > 0:
+    print('For year No.:' + str(current_year))
+    month = 0
+    total_month = 0
+    while int(month) <= 11:
+        if month == 0:
+            m_s = 'Jan.'
+        elif int(month) == 1:
+            m_s = 'Feb.'
+        elif int(month) == 2:
+            m_s = 'Mar.'
+        elif int(month) == 3:
+            m_s = 'Apr.'
+        elif int(month) == 4:
+            m_s = 'May.'
+        elif int(month) == 5:
+            m_s = 'Jun.'
+        elif int(month) == 6:
+            m_s = 'Jul.'
+        elif int(month) == 7:
+            m_s = 'Aug.'
+        elif int(month) == 8:
+            m_s = 'Sept.'
+        elif int(month) == 9:
+            m_s = 'Oct.'
+        elif int(month) == 10:
+            m_s = 'Nov.'
+        elif int(month) == 11:
+            m_s = 'Dec.'
+            
+        total = input('Enter the rainfall amount for ' + m_s + ': ')
+        month = int(month) + 1
+        total_month = float(total_month) + float(total)
+
+    rain_allmonths = float(rain_allmonths) + float(total_month)
+    total_months = int(total_months) + int(month)
+    current_year = int(current_year) + 1
+
+    
+
+#if the user inputs a correct input the these statements will out the needed values
+if int(year_total) > 0:
+        #final output of total months, total rainfall and month average rainfall
+    print('There are ' + str(total_months) + ' months.')
+    rain_allmonths = round(rain_allmonths, 2)
+    print('The total rainfall is ' + str(rain_allmonths) + ' inches.')
+    monthly_avg = 0
+    monthly_avg = float(rain_allmonths) / float(total_months)
+    monthly_avg = round(monthly_avg, 2)
+    print('The monthly average rainfall is ' + str(monthly_avg) + ' inches.')
+else:
+    print('Invalid Input')
+    
+
+    
+EXERCISE 3
+#################
+# Author: Simon Sasin   
+# Date: 09/29/2019
+# This program calculates population growth of each day of the amount of days the user inputs
+#################
+
+EXERCISE 4
+#################
+# Author: Simon Sasin   
+# Date: 09/29/2019
+# This program reproduces a shrinking pyramid of asterisk
+#################
+
+i = 0
+for row in range (1,7):
+    for column in range(1,0):
+        print('*', end = ' ')
+    print('\r')
+          
+    
+EXERCISE 5
+#################
+# Author: Simon Sasin   
+# Date: 09/29/2019
+# This program reproduces the olympic logo using turtle
+#################
+#import turtle and set coordinate system to begin to the left
+import turtle
+turtle.pensize(10)
+turtle.penup()
+turtle.back(100)
+turtle.pendown()
+
+
+#for loop to decide which cirle to draw, the color and location
+colors_top = ['blue','yellow','black','green','red']
+x = 0
+for i in range(5):
+    turtle.pencolor(colors_top[i])
+    if i == 1:
+        turtle.penup()
+        turtle.goto(62.5,-62.5)
+        turtle.pendown()
+        turtle.circle(50)
+    elif i == 3:
+        turtle.penup()
+        turtle.goto(187.5,-62.5)
+        turtle.pendown()
+        turtle.circle(50)
+    else:
+        turtle.penup()
+        turtle.goto(x,0)
+        turtle.pendown()
+        turtle.circle(50)
+        x = x + 125
+    
