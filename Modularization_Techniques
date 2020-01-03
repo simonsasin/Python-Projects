@@ -1,0 +1,230 @@
+EXERCISE 1
+################
+# Author: Simon Sasin
+# Date: 10/06/2019
+# This program finds the falling distance of an object over a time interval of 1 to 10
+#################
+#defined variables
+g = float(9.8)
+
+#this MAIN() function calls a calculation function to find and print falling distance per time
+def main():
+
+    print('Time(s)\tFalling Distance(m)')
+    print('----------------------')
+
+    #for loop to call falling distance and prints d for each time increment
+    for t in range(1,11):
+        print(str(t),'\t',format(falling_distance(t),'.2f'))
+
+#define power function
+def falling_distance(t):
+    d = (1/2)*g*float(t)**2
+
+    return float(d)
+
+#call main function to run main()
+main()
+
+EXERCISE 2
+################
+# Author: Simon Sasin
+# Date: 10/07/2019
+# This program calculates the max of two inputted integers
+#################
+
+#defining main function that accepts inputs and calls max function
+def main():
+    number1 = float(input('Enter the first integer: '))
+    number2 = float(input('Enter the second integer: '))
+
+    #calling of max function to determine max of number1 and number2
+    max(number1, number2)
+
+#defining of max funciton to take 2 integer inputs and display if not integer or max
+def max(number1, number2): 
+    if number1%1 != 0:
+        print(str(number1) + ' is not an integer.')
+    elif number2%1 != 0:
+        print(str(number2) + ' is not an integer.')
+    else:
+        if number1 > number2:
+            max = int(number1)
+        else:
+            max = int(number2)
+            
+        print(str(max) + ' is greater.')
+#calling main function to run 
+main()
+
+
+
+EXERCISE 3
+###############
+# Author: Simon Sasin
+# Date: 10/07/2019
+# This program calculates the letter and number grades and total average
+#of 5 user inputted grades
+#################
+
+#defining main function that calls other 3 functions
+def main():
+    #section for user input validation and assignment based off of user inputs
+    score = float(input('Enter a score: '))
+    s1 = int(get_valid_score(score))
+    score = float(input('Enter a score: '))
+    s2 = int(get_valid_score(score))
+    score = float(input('Enter a score: '))
+    s3 = int(get_valid_score(score))
+    score = float(input('Enter a score: '))
+    s4 = int(get_valid_score(score))
+    score = float(input('Enter a score: '))
+    s5 = int(get_valid_score(score))
+
+    #calling average function to find average of test scores
+
+    avg = calc_average(s1,s2,s3,s4,s5)
+
+    #function being called for each score to find letter grade
+
+    l1 = determine_grade(s1)
+    l2 = determine_grade(s2)
+    l3 = determine_grade(s3)
+    l4 = determine_grade(s4)
+    l5 = determine_grade(s5)
+
+    #final program output of grades and average of grades
+
+    print('The letter grade for ' + str(s1) + ' is ' + l1 + '.')
+    print('The letter grade for ' + str(s2) + ' is ' + l2 + '.')
+    print('The letter grade for ' + str(s3) + ' is ' + l3 + '.')
+    print('The letter grade for ' + str(s4) + ' is ' + l4 + '.')
+    print('The letter grade for ' + str(s5) + ' is ' + l5 + '.')
+    print('The average test score is ' + format(avg,'.2f')) 
+
+#definition of valid score function to check if user input is valid score
+def get_valid_score(s):
+    
+    while (s < 0) or (s > 100):
+        print('Invalid Input. Please try again')
+        s = float(input('Enter a score: '))
+                      
+    return s
+
+#definition of average function to find average of all scores
+def calc_average(s1,s2,s3,s4,s5):
+    avg = float(((s1 + s2 + s3 + s4 + s5)/5))
+    
+    return avg
+
+#definition of letter grade determination function
+def determine_grade(s):
+    if s >= 90 and s <= 100:
+        l = 'A'
+    elif s >= 80 and s < 90:
+        l = 'B'
+    elif s >= 70 and s <80:
+        l = 'C'
+    elif s >= 60 and s < 70:
+        l  = 'D'
+    else:
+        l = 'F'
+
+    return l
+    
+#calling main function to run
+main()
+
+
+EXERCISE 4A
+################
+# Author: Simon Sasin
+# Date: 10/07/2019
+# This program uses a function to determine whether user inputted integer
+# is prime and give output based off of that
+#################
+#definitionof main function which calls is_prime
+def main():
+    #user input int to chck for prime
+    num = int(input('Enter an integer: '))
+    #calling is_prime function
+    det = is_prime(num)
+
+    #printing whether integer is prime or not
+    if det == 0:
+        print(str(num) + ' is not a prime number.')
+    else:
+        print(str(num) + ' is a prime number.')
+
+#definition of is_prime function to determine if not is prime or not
+def is_prime(num):
+    det = 1
+    if num < 2:
+        step = -1
+    else:
+        step = 1
+    for i in range(2, num-1, step):
+        if num%i == 0:
+            det = 0
+
+    return det
+
+#calling main function to run
+main()
+
+EXERCISE 4B 	
+################
+# Author: Simon Sasin
+# Date: 10/07/2019
+# This program uses a while loop going from 1 to 100 and prints a list of
+#prime numbers from 1 to 100
+#################
+#definitionof main function which calls is_prime
+def main():
+    #intialization and while loop calling is_prime function to print num if it is prime to give a list
+    num = 1
+    while num <= 100:
+        det = is_prime(num)
+        if det == 1:
+            print(str(num) + ' is a prime number.')
+        num += 1
+
+#definition of is_prime function to determine if not is prime or not
+def is_prime(num):
+    det = 1
+    if num < 2:
+        step = -1
+    else:
+        step = 1
+    for i in range(2, num-1, step):
+        if num%i == 0:
+            det = 0
+
+    return det
+
+
+#calling main function to run
+main()
+
+
+EXERCISE 5
+################
+# Author: Simon Sasin
+# Date: 10/07/2019
+# This program draws a hypnotic square with width between rings of 10
+#################
+#import turtle library of functions
+import turtle
+#widen screen for easier viewing
+turtle.setup(800,600)
+
+#intialize side lengh and set turtle to be pointing down initially
+side = 300
+turtle.right(90)
+#for loop to drawing hypnotic sqaure
+for i in range(29):
+    turtle.forward(side)
+    turtle.right(90)
+    side = side - 10
+
+turtle.done()
